@@ -1,0 +1,17 @@
+  - name: install memcached and its py3 client lib
+    apt:
+      name:
+        - memcached
+        - python3-memcache
+      state: present
+
+  - name: update the memcached conf file
+    lineinfile:
+      path: /etc/memcached.conf
+      regexp: '^(-l\s+)127.0.0.1'
+      line: '\g<1>192.168.56.111'
+
+  - name: restart memcached service
+    service:
+      name: memcached
+      state: restarted

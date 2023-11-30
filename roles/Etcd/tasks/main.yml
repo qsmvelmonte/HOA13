@@ -1,0 +1,13 @@
+  - name: install the etcd package
+    shell:
+      sudo apt install etcd -y
+
+  - name: copy etcd conf template
+    template:
+      src: etcd.j2
+      dest: /etc/default/etcd
+
+  - name: restart memcached service
+    service:
+      name: etcd
+      state: restarted

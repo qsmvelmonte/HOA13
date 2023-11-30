@@ -1,0 +1,12 @@
+  - name: install the nova compute-openstock
+    shell:
+      sudo apt install nova-compute -y
+
+  - name: installs the openstock client
+    shell:
+      sudo apt install python3-openstackclient -y
+
+  - name: add openstock yoga repo
+    shell:
+      sudo add-apt-repository cloud-archive:yoga -y
+

@@ -1,0 +1,11 @@
+  - name: install the package
+    shell:
+      sudo apt install rabbitmq-server -y
+
+  - name: add the openstack user
+    shell:
+      sudo rabbitmqctl add_user openstack RABBIT_PASS
+
+  - name: Permit configuration, write, and read access for the openstack user
+    shell:
+      sudo rabbitmqctl set_permissions openstack ".*" ".*" ".*"
